@@ -13,10 +13,23 @@
   background-color: green;
   width: 25%;
 }
+
+.mainpage-container {
+  margin-top: 40px;
+}
+
 .carousel-caption h3 {
   font-color: green;
 }
-h1, h4 {
-  color: white;
 
+.carousel-caption h1 {
+  color: white;
+}
+
+.page-description-title {
+  color: red;
+}
+
+.carousel-caption h2 {
+  color:white;
 }

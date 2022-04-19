@@ -1,11 +1,12 @@
 import React from 'react';
-import '../../Assets/Styles/header.css';
+//import styles from '../../../assets/styles/header.module.css';
+import { FaSearch } from 'react-icons/fa';
 import { Navbar, Nav, NavDropdown, Container, Form, Button, FormControl} from 'react-bootstrap';
 
 const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-    <Container fluid>
+    <Container className="navbar-container" fluid>
     <Navbar.Brand href="#home">Sougood</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Nav className='justify-content-center flex-grow-1 pe-3' >
@@ -35,7 +36,7 @@ const NavBar = () => {
           className="me-2"
           aria-label="Search"
         />
-        <Button variant="outline-success"><i className="bi bi-search"></i></Button>
+	    <Button variant="outline-success"><FaSearch /></Button>
       </Form>
 	</Nav>
 	  </Container>
