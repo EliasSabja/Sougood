@@ -1,10 +1,10 @@
 .catalogcontainer {
   margin: 0;
   padding: 0;
-  width: 80vw;
+  width: 100vw;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 250px);
-  grid-auto-rows: 10px;
+  grid-template-columns: repeat(auto-fill, 345px);
+  grid-auto-rows: 15px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

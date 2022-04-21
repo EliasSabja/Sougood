@@ -17,7 +17,7 @@ const MainPage = () => {
 	  <Carousel variant="dark">
 	    <Carousel.Item interval={1000}>
 	      <Image
-                src={require('../assets/images/image1.jpg')}
+                src={require('../assets/images/image1.jpeg')}
                 width={900} height={800}/>
               <Carousel.Caption>
                 <h3>Primer producto</h3>
@@ -26,7 +26,7 @@ const MainPage = () => {
             </Carousel.Item>
 	    <Carousel.Item interval={500}>
 	      <Image
-		src={require('../assets/images/image2.jpg')}
+		src={require('../assets/images/image2.jpeg')}
 		alt="Second slide"
 		width={900} height={800}/>
 	      <Carousel.Caption>
