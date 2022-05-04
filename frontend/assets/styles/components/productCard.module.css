@@ -5,27 +5,32 @@
   background-color: red;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .small {
-  grid-row-end: span 23;
+  grid-row-end: span 21;
 }
 
 .medium {
-  grid-row-end: span 33;
+  grid-row-end: span 23;
 }
 
 .large {
-  grid-row-end: span 43;
+  grid-row-end: span 25;
 }
 
 .productCardImageContainer{
   flex-grow: 1;
   position: relative;
-  height:100%;
+  height: 100%;
   width: 100%;
 }
 
 .productCardImage{
   
+}
+
+.productCardTags{
+  padding: 5px;
 }

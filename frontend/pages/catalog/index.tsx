@@ -15,6 +15,10 @@ const CatalogLayout = () => {
       <ProductCard size="medium" src="image8.jpeg"></ProductCard>
       <ProductCard size="small" src="image9.jpeg"></ProductCard>
       <ProductCard size="medium" src="image10.jpeg"></ProductCard>
+	<ProductCard size="large" src="image11.jpeg"></ProductCard>	
+	  <ProductCard size="small" src="image12.jpeg"></ProductCard>
+	    <ProductCard size="large" src="image13.jpeg"></ProductCard>
+	      <ProductCard size="medium" src="image14.jpeg"></ProductCard>
     </div>
   );
 };
