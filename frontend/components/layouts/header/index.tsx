@@ -1,13 +1,15 @@
 import React from 'react';
-//import styles from '../../../assets/styles/header.module.css';
+import styles from '../../../assets/styles/header.module.css';
 import { FaSearch } from 'react-icons/fa';
 import { Navbar, Nav, NavDropdown, Container, Form, Button, FormControl} from 'react-bootstrap';
-
+import Image from 'next/image';
 const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-    <Container className="navbar-container" fluid>
-    <Navbar.Brand href="#home">Sougood</Navbar.Brand>
+      <Container className={styles.navbarContainer} fluid>
+	<Navbar.Brand href="#home">
+	  <Image src={require('../../../assets/images/logoSougood.png')} width="260px" height="80px"></Image>
+	</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Nav className='justify-content-center flex-grow-1 pe-3' >
 	<NavDropdown title="Bienestar Ambiental, Animal y Humano">
