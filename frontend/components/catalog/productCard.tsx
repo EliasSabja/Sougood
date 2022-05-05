@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from '../../assets/styles/components/productCard.module.css';
 import Image from 'next/image';
-//import { Card, Image} from 'react-bootstrap';
 
 const styleOptions = {
   'small': styles.small,
@@ -20,18 +19,17 @@ interface ProductCardProps {
 const ProductCard : ReactFC<ProductCardProps>= (props: ProductCardProps) => {
   
   const showDetails = () => {
-    console.log("Child - Show Details");
     props.showDetails(props.productId);
   };
 
   return(
     <div className={styles.productCard + " " + styleOptions[props.size]} onClick={showDetails}>
-	<div className={styles.productCardImageContainer}>	
-	  <Image src={require('../../assets/images/'+props.src)} className={styles.productCardImage} layout="fill"/>
+	    <div className={styles.productCardImageContainer}>	
+	      <Image src={require('../../assets/images/'+props.src)} className={styles.productCardImage} layout="fill"/>
 	    </div>
-	      <div className={styles.productCardTags}>
-		{props.tags.reduce((prevTag, currTag) => "#" + prevTag + " #" + currTag)}
-	      </div>
+	    <div className={styles.productCardTags}>
+		    {props.tags.reduce((prevTag, currTag) => "#" + prevTag + " #" + currTag)}
+	    </div>
     </div>
   );
 }
