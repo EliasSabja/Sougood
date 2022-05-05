@@ -23,8 +23,8 @@
 
 .closeButton{
   position: fixed;
-  right: calc(15% - 15px);
-  top: 0;
+  right: calc(25% - 10px);
+  top: calc(15vh - 10px);
   background: #ededed;
   width: 25px;
   height: 25px;
@@ -35,5 +35,16 @@
 
 .productImage{
   border-radius: 15px;
+}
+
+.addToCartButtonContainer{
+  text-align: center;
+  justify-content: center;
+}
+
+.addToCartButton {
+  width: 50%;
+  background-color: #96b522;
+  border-color: transparent;
 }
 

@@ -30,9 +30,9 @@ const ProductDetails = (props: ProductDetailsProps): ReactElement => {
 	    <Col> <Image className={styles.productImage} src={require('../../assets/images/' + props.product.src)} width="450px" height="500px"></Image></Col>
 	      <Col> 
 		<Row><b>Nombre del producto</b></Row>
-		  <Row><p>Descripción del producto</p></Row>
+		<Row><p>Descripción del producto</p></Row>
+		<Row className={styles.addToCartButtonContainer}><Button className={styles.addToCartButton}>Agregar al carrito</Button></Row>
 	      </Col>
-	      <Col> <Button>Agregar al carrito</Button></Col>
 	  </Row>
       </div>
     </div>
