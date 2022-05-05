@@ -13,18 +13,20 @@ const tags2 = [
   "Pocas unidades",
 ];
 
-const CatalogLayout = () => {
-  const [isShowingDetails, setIsShowingDetails] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState(-1);
 
-  const showDetails = (productId) => {
+const CatalogLayout = () => {
+  const [isShowingDetails, setIsShowingDetails] = useState<boolean>(false);
+  const [selectedProduct, setSelectedProduct] = useState<SelectedProduct>({src: "", id: -1});
+
+  const showDetails = (id, src) => {
     setIsShowingDetails(currIsShowingDetails => !currIsShowingDetails);
-    setSelectedProductId(productId);
+    console.log("Will show details: " + id + " " + src);
+    setSelectedProduct({src, id});
   }
 
   const closeShowDetails = () => {
     setIsShowingDetails(currIsShowingDetails => !currIsShowingDetails);
-    setSelectedProductId(-1);
+    setSelectedProduct({src: "", id: -1});
   }
 
   return (
@@ -44,7 +46,7 @@ const CatalogLayout = () => {
       <ProductCard size="large" src="image13.jpeg" tags={tags2} productId={13} showDetails={showDetails}></ProductCard>
       <ProductCard size="medium" src="image14.jpeg" tags={tags2} productId={14} showDetails={showDetails}></ProductCard>
       {isShowingDetails && 
-        <ProductDetails handleClose={closeShowDetails} productId={selectedProductId} />
+        <ProductDetails handleClose={closeShowDetails} product={selectedProduct} />
       }
 	
     </div>

@@ -19,7 +19,7 @@ interface ProductCardProps {
 const ProductCard : ReactFC<ProductCardProps>= (props: ProductCardProps) => {
   
   const showDetails = () => {
-    props.showDetails(props.productId);
+    props.showDetails(props.productId, props.src);
   };
 
   return(
