@@ -18,8 +18,8 @@ interface ProductCardProps {
 
 const ProductCard : ReactFC<ProductCardProps>= (props: ProductCardProps) => {
   
-  const showDetails = () => {
-    props.showDetails(props.productId, props.src);
+  const showDetails = (event) => {
+    props.showDetails(props.productId, props.src, event.clientY);
   };
 
   return(

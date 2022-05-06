@@ -1,30 +1,30 @@
 .detailsBox{
-  position: fixed;
+  position: absolute;
   background: #00000050;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   top: 0;
   left: 0;
-}
+  }
 
 .detailsElementsContainer{
-  position: relative;
+  position: sticky;
   width:50%;
   margin: 0 auto;
-  height: auto;
+  height: 500px;
   max-height: 70vh;
   margin-top: 15vh;
   background: #fff;
   border-radius: 15px;
-  padding: 20px;
+  padding: 5px;
   border: 1px solid #999;
-  overflow: auto;
+  top: 100px;
 }
 
 .closeButton{
-  position: fixed;
-  right: calc(25% - 10px);
-  top: calc(15vh - 10px);
+  position: absolute;
+  right: -10px;
+  top: -10px;
   background: #ededed;
   width: 25px;
   height: 25px;
@@ -35,6 +35,14 @@
 
 .productImage{
   border-radius: 15px;
+}
+
+.productName{
+  font-size: 25px;
+}
+
+.productDetails {
+  padding-top: 10px;
 }
 
 .addToCartButtonContainer{
@@ -48,3 +56,6 @@
   border-color: transparent;
 }
 
+.productDescription {
+  height: 80%;
+}
