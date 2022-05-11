@@ -27,7 +27,10 @@ const ProductCard : ReactFC<ProductCardProps>= (props: ProductCardProps) => {
 	    <div className={styles.productCardImageContainer}>	
 	      <Image src={require('../../assets/images/'+props.src)} className={styles.productCardImage} layout="fill"/>
 	    </div>
-	    <div className={styles.productCardTags}>
+	    <div className={styles.productName + " " + styles.productText}><span>Paquete de regalo</span></div>
+	    <div className={styles.productSubcategory + " " + styles.productText}><span>Lorem ipsum</span></div>
+	    
+	    <div className={styles.productCardTags + " " + styles.productText}>
 		    {props.tags.reduce((prevTag, currTag) => "#" + prevTag + " #" + currTag)}
 	    </div>
     </div>

@@ -39,20 +39,14 @@
   color: black;
 }
 
-.productName{
-  padding-top: 5px;
-}
-
 .productSubcategory {
   color: green;
   background-color: transparent;
   text-decoration: none;
-  padding-bottom: 5px;
-  font-size: 14px;
 }
 
 .productCardTags{
-  padding-bottom: 5px;
   font-size: 12px;
   font-family: "Georgia", "Courier New", "open sans";
+  
 }

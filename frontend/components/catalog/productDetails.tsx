@@ -26,7 +26,7 @@ const ProductDetails = (props: ProductDetailsProps): ReactElement => {
       <div className={styles.detailsElementsContainer} >
 	<CloseButton className={styles.closeButton} onClick={closeDetails}></CloseButton>
 	  <Row>
-	    <Col> <Image className={styles.productImage} src={require('../../assets/images/' + props.product.src)} width="450px" height="500px"></Image></Col>
+	    <Col> <Image className={styles.productImage} src={require('../../assets/images/' + props.product.src)} width="450px" height="490px"></Image></Col>
 	      <Col className={styles.productDetails}> 
 		<Row><b className={styles.productName}>Nombre del producto</b></Row>
 		<Row className={styles.productDescription}><p>Descripción del producto</p></Row>
