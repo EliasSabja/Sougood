@@ -2,12 +2,17 @@
   margin: 10px 15px;
   padding: 0;
   border-radius: 16px;
-  background-color: white;
+  background-color: #E52142;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   -webkit-box-shadow: 8px 8px 15px 5px rgba(0,0,0,0.5); 
   box-shadow: 8px 8px 15px 5px rgba(0,0,0,0.5);
+  transition: transform .3s;
+}
+
+.productCard:hover{
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .small {
@@ -29,30 +34,33 @@
   width: 100%;
 }
 
-.productCardImage{
-  
-}
-
 .productText{
-  margin-left: 15px;
-  margin-right: 15px;
-  color: black;
+    color: black;
+    font-weight: bold;
 }
 
 .productName{
-  padding-top: 5px;
+  margin-left: 15px;
 }
 
 .productSubcategory {
-  color: green;
+  color: white;
   background-color: transparent;
   text-decoration: none;
-  padding-bottom: 5px;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 10px;
+  max-width: 40%;
 }
 
+.productSubcategory:hover {
+  color: #ADBF26;
+  cursor: pointer;
+}
 .productCardTags{
   padding-bottom: 5px;
+  margin-left: 17px;
   font-size: 12px;
   font-family: "Georgia", "Courier New", "open sans";
 }
