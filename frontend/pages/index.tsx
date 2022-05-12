@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../../assets/styles/catalog.module.css';
-import ProductCard from '../../components/catalog/productCard';
-import ProductDetails from '../../components/catalog/productDetails';
+import styles from '../assets/styles/catalog.module.css';
+import ProductCard from '../components/catalog/productCard';
+import ProductDetails from '../components/catalog/productDetails';
 
 const tags1 = [
   "Oferta",
@@ -28,8 +28,14 @@ const CatalogLayout = () => {
     setSelectedProduct({src: "", id: -1});
   }
 
+  useEffect(() => {
+    //Load products from API.
+    
+    // Render products in Component.
+  });
+
   return (
-    <div className={styles.catalogcontainer}>
+    <div className={styles.catalogContainer}>
       <ProductCard size="small" src="image1.jpeg" tags={tags1} productId={1} showDetails={showDetails}></ProductCard>
       <ProductCard size="small" src="image2.jpeg" tags={tags2} productId={2} showDetails={showDetails}></ProductCard>
       <ProductCard size="medium" src="image3.jpeg" tags={tags2} productId={3} showDetails={showDetails}></ProductCard>
@@ -43,8 +49,8 @@ const CatalogLayout = () => {
       <ProductCard size="large" src="image11.jpeg" tags={tags2} productId={11} showDetails={showDetails}></ProductCard>	
       <ProductCard size="small" src="image12.jpeg" tags={tags1} productId={12} showDetails={showDetails}></ProductCard>
       <ProductCard size="large" src="image13.jpeg" tags={tags2} productId={13} showDetails={showDetails}></ProductCard>
-	<ProductCard size="medium" src="image14.jpeg" tags={tags2} productId={14} showDetails={showDetails}></ProductCard>
-    <ProductCard size="small" src="image1.jpeg" tags={tags1} productId={1} showDetails={showDetails}></ProductCard>
+      <ProductCard size="medium" src="image14.jpeg" tags={tags2} productId={14} showDetails={showDetails}></ProductCard>
+      <ProductCard size="small" src="image1.jpeg" tags={tags1} productId={1} showDetails={showDetails}></ProductCard>
       <ProductCard size="small" src="image2.jpeg" tags={tags2} productId={2} showDetails={showDetails}></ProductCard>
       <ProductCard size="medium" src="image3.jpeg" tags={tags2} productId={3} showDetails={showDetails}></ProductCard>
       <ProductCard size="large" src="image4.jpeg" tags={tags1} productId={4} showDetails={showDetails}></ProductCard>
@@ -59,9 +65,7 @@ const CatalogLayout = () => {
       <ProductCard size="large" src="image13.jpeg" tags={tags2} productId={13} showDetails={showDetails}></ProductCard>
       <ProductCard size="medium" src="image14.jpeg" tags={tags2} productId={14} showDetails={showDetails}></ProductCard>
 
-      {isShowingDetails && 
-	<ProductDetails handleClose={closeShowDetails} product={selectedProduct} />
-      }  
+      {isShowingDetails && <ProductDetails handleClose={closeShowDetails} product={selectedProduct} />}  
 	
     </div>
   );
