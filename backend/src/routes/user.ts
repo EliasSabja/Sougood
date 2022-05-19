@@ -14,4 +14,14 @@ userRouter.post("/", async (req: Request, res: Response) => {
   }
 });
 
+userRouter.delete("/", async (req: Request, res: Response) => {
+  try {
+    console.log("Removing all users");
+    await UserController.removeUsers();
+    return res.status(201).send({message: "All users have been removed.."});
+  } catch (err: any) {
+    return res.status(400).send({message: err.message});
+  }
+});
+
 module.exports = userRouter;
