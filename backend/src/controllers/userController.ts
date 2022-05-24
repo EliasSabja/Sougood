@@ -19,6 +19,16 @@ const createUser = async (request: UserPostRequest) => {
   }
 };
 
+const removeUsers = async () => {
+  try {
+    await User.deleteMany({});
+    return "sucess";
+  } catch (err: any) {
+    throw err;
+  }
+};
+
 module.exports = {
   createUser,
+  removeUsers,
 };
