@@ -3,12 +3,13 @@ import styles from '../../../assets/styles/header.module.css';
 import { FaSearch } from 'react-icons/fa';
 import { Navbar, Nav, NavDropdown, Container, Form, Button, FormControl} from 'react-bootstrap';
 import Image from 'next/image';
+import Router from 'next/router';
 
 const NavBar = () => {
   return (
     <Navbar collapseOnSelect className={styles.navBar} expand="lg">
       <Container className={styles.navbarContainer} fluid>
-	<Navbar.Brand href="#home">
+	<Navbar.Brand href="/catalog">
 	  <Image src={require('../../../assets/images/logoSougood.png')} width="260px" height="80px"></Image>
 	</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
