@@ -1,6 +1,8 @@
-import Button from "@mui/material/Button";
-import { ICartItem } from "../../types/cart";
+//import Button from "@mui/material/Button";
+import { Button } from 'react-bootstrap';
+import ICartItem from "../../types/cart";
 import styles from "../../assets/styles/components/cart.module.css";
+import Image from 'next/image';
 
 type Props = {
   item: ICartItem;
@@ -9,30 +11,31 @@ type Props = {
 };
 
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
-  <div className={styles.cartContainer}>
-    <div>
+  <div className={styles.cartItemContainer}>
+    <div clasName={styles.cartItem}>
       <h3>{item.name}</h3>
-      <div className="information">
-        <p>Price: $ {item.price}</p>
-        <p>Total: $ {(item.price + item.amount).toFixed(2)}</p>
+      <div className={styles.information}>
+        <p>Precio unitario: $ {item.price}</p>
+        <p>Total: $ {(item.price * item.amount)}</p>
       </div>
-      <div className="buttons">
+      <div className={styles.buttons}>
         <Button
           size="small"
           disableElevation
-          variant="contained"
+          variant="outline-success"
           onClick={() => removeFromCart(item.id)}
         > - </Button>
         <p>{item.amount}</p>
         <Button
           size="small"
           disableElevation
-          variant="contained"
+          variant="outline-success"
           onClick={() => addToCart(item)}
         > + </Button>
       </div>
     </div>
-    <img src={item.image} alt={item.name} />
+    <Image className={styles.productImage} src={require('../../assets/images/' + item.image)} width="120px" height="80px"></Image>
+
   </div>
 );
 

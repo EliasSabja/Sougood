@@ -10,17 +10,6 @@ interface ProductCardProps {
   showDetails: (product: Product) => void,
 };
 
-/*export default interface ICartItem {
-  id: string;
-  name: string;
-  category: string;
-  subcategory: string;
-  description: string;
-  image: string;
-  price: number;
-  amount: number;
-};*/
-
 const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
   const styleOptions = {
     'small': styles.small,
