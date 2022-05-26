@@ -4,6 +4,7 @@
   border-radius: 16px;
   background-color: #97b526;
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   -webkit-box-shadow: 8px 8px 15px 5px rgba(0,0,0,0.5); 
   box-shadow: 8px 8px 15px 5px rgba(0,0,0,0.5);
