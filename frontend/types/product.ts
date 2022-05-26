@@ -6,8 +6,8 @@ export default interface Product {
   description: string;
   image: string;
   price: number;
-  amount: number;
   subcategory: string;
   tags: string[];
   stock: number;
+  size: string;
 }
