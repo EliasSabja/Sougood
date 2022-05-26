@@ -4,6 +4,7 @@ import styles from '../../assets/styles/catalog.module.css';
 import ProductCard from '../product/productCard';
 import ProductDetails from '../product/productDetails';
 import { Row, Col, Container } from 'react-bootstrap';
+import Product from '../../types/product';
 
 const tags1 = [
   "Oferta",
@@ -14,6 +15,7 @@ const tags2 = [
   "Oferta",
   "Pocas unidades",
 ];
+
 const productsAPI = [
   { id: 1, tags: tags1, src: "image1.jpeg", size: "small", category: "Lorem ipsum" },
   { id: 2, tags: tags2, src: "image2.jpeg", size: "small", category: "Lorem ipsum" },
@@ -47,13 +49,13 @@ const productsAPI = [
 
 ];
 
-interface Product {
+/*interface Product {
   id: number,
   tags: string,
   src: string,
   size: string,
   category: string,
-}
+}*/
 
 interface CatalogLayoutProps {
   category?: string,
@@ -63,7 +65,7 @@ const CatalogLayout: ReactElement<CatalogLayoutProps> = (props: CatalogLayoutPro
   const [products, setProducts] = useState<Product[]>();
   const [category, setCategory] = useState<string>(props.category);
   const [isShowingDetails, setIsShowingDetails] = useState<boolean>(false);
-  const [selectedProduct, setSelectedProduct] = useState<SelectedProduct>({ src: "", id: -1 });
+  const [selectedProduct, setSelectedProduct] = useState<Product>({ src: "", id: "-1" });
 
   const showDetails = (id, src) => {
     setIsShowingDetails(currIsShowingDetails => !currIsShowingDetails);
@@ -72,7 +74,7 @@ const CatalogLayout: ReactElement<CatalogLayoutProps> = (props: CatalogLayoutPro
 
   const closeShowDetails = () => {
     setIsShowingDetails(currIsShowingDetails => !currIsShowingDetails);
-    setSelectedProduct({ src: "", id: -1 });
+    setSelectedProduct({ src: "", id: "-1" });
   }
 
   useEffect(() => {

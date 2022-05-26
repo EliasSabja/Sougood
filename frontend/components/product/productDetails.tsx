@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Button, CloseButton, Row, Col } from 'react-bootstrap';
 import styles from '../../assets/styles/components/productDetails.module.css';
 import Image from 'next/image';
+import { CartItemsContext } from '../../contexts/cartContext';
 
 export interface SelectedProduct {
   src: string,
@@ -18,6 +19,8 @@ export interface ProductDetailsProps {
 
 const ProductDetails = (props: ProductDetailsProps): ReactElement => {
 
+  const { addToCart } = useContext(CartItemsContext);
+
   const closeDetails = () => {
     props.handleClose();
   }
@@ -31,7 +34,7 @@ const ProductDetails = (props: ProductDetailsProps): ReactElement => {
           <Col className={styles.productDetails}>
             <Row><b className={styles.productName}>Nombre del producto</b></Row>
             <Row className={styles.productDescription}><p>Descripción del producto</p></Row>
-            <Row className={styles.addToCartButtonContainer}><Button className={styles.addToCartButton}>Agregar al carrito</Button></Row>
+            <Row className={styles.addToCartButtonContainer}><Button className={styles.addToCartButton} onClick={() => console.log("Clicked")}>Agregar al carrito</Button></Row>
           </Col>
         </Row>
       </div>
