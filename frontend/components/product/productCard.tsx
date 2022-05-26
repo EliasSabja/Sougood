@@ -17,8 +17,6 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
     'large': styles.large,
   };
 
-  console.log(props.product);
-
   const showDetails = () => {
     props.showDetails(props.product);
   };

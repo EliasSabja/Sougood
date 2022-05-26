@@ -29,8 +29,8 @@ export const CartProvider: React.FC = ({ children }) => {
   };
 
   const removeFromCart = (id: string) => {
-    setCartItems((prev: ICartItem[]) => {
-      prev.reduce((acc, item) => {
+    setCartItems((prev) => {
+      return prev.reduce((acc, item) => {
         if (item.id === id) {
           if (item.amount === 1) return acc;
           return [...acc, { ...item, amount: item.amount - 1 }];
@@ -38,7 +38,7 @@ export const CartProvider: React.FC = ({ children }) => {
 
         return [...acc, item];
 
-      }, [] as ICartItem[])
+      }, [])
     });
 
   };

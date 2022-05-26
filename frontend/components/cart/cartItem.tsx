@@ -12,7 +12,7 @@ type Props = {
 
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
   <div className={styles.cartItemContainer}>
-    <div clasName={styles.cartItem}>
+    <div className={styles.cartItem}>
       <h3>{item.name}</h3>
       <div className={styles.information}>
         <p>Precio unitario: $ {item.price}</p>
@@ -21,14 +21,12 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
       <div className={styles.buttons}>
         <Button
           size="small"
-          disableElevation
           variant="outline-success"
           onClick={() => removeFromCart(item.id)}
         > - </Button>
         <p>{item.amount}</p>
         <Button
           size="small"
-          disableElevation
           variant="outline-success"
           onClick={() => addToCart(item)}
         > + </Button>

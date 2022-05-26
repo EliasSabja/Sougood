@@ -46,13 +46,6 @@ const productsAPI: Product[] = [
   { id: "27", tags: tags2, image: "image13.jpeg", size: "large", category: "Subcategoria dos", subcategory: "ipsum", name: "nombre del producto", stock: 5, description: "Descripción del producto", price: 2500 },
   { id: "28", tags: tags1, image: "image14.jpeg", size: "medium", category: "Subcategoria dos", subcategory: "ipsum", name: "nombre del producto", stock: 5, description: "Descripción del producto", price: 2500 },
 ];
-/*interface Product {
-  id: number,
-  tags: string,
-  src: string,
-  size: string,
-  category: string,
-}*/
 
 interface CatalogLayoutProps {
   category?: string,
@@ -66,8 +59,6 @@ const CatalogLayout: ReactElement<CatalogLayoutProps> = (props: CatalogLayoutPro
 
   const showDetails = (product: Product) => {
     setIsShowingDetails(currIsShowingDetails => !currIsShowingDetails);
-    console.log("SHOW");
-    console.log(product);
     setSelectedProduct(product);
   }
 
@@ -97,7 +88,7 @@ const CatalogLayout: ReactElement<CatalogLayoutProps> = (props: CatalogLayoutPro
 
       <div className={styles.catalog}>
         {products && products.map((product) => (
-          <ProductCard key={product.key} product={product} showDetails={showDetails} ></ProductCard>
+          <ProductCard key={product.id} product={product} showDetails={showDetails} ></ProductCard>
         ))}
       </div>
 
