@@ -1,13 +1,13 @@
 import type { ReactElement } from "react";
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import CatalogLayout from '../../components/catalog/catalogLayout';
 
-const SubcategoryCatalog = (): ReactElement => {
+const CategoryCatalog = (): ReactElement => {
   const router = useRouter();
-  const {subcategory} = router.query;
+  const { category } = router.query;
 
-  console.log(subcategory);
-  return <CatalogLayout subcategory={subcategory}/>
+  console.log(category);
+  return <CatalogLayout category={category} />
 }
 
-export default SubcategoryCatalog;
+export default CategoryCatalog;

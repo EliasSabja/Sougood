@@ -1,0 +1,11 @@
+
+.cartContainer {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 500px;
+  padding: 20px;
+}
+
+.information, .buttons {
+  display: flex;
+  justify-content: space-between;
+}

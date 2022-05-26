@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { Button, CloseButton, Row, Col } from 'react-bootstrap';
 import styles from '../../assets/styles/components/productDetails.module.css';
 import Image from 'next/image';
@@ -17,6 +17,7 @@ export interface ProductDetailsProps {
 }
 
 const ProductDetails = (props: ProductDetailsProps): ReactElement => {
+
   const closeDetails = () => {
     props.handleClose();
   }

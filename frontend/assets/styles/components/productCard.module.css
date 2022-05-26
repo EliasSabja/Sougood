@@ -43,7 +43,7 @@
   margin-left: 15px;
 }
 
-.productSubcategory {
+.productCategory {
   color: white;
   background-color: transparent;
   text-decoration: none;
@@ -54,8 +54,8 @@
   max-width: 40%;
 }
 
-.productSubcategory:hover {
-  color: #ADBF26;
+.productCategory:hover {
+  color: #EA4F68;
   cursor: pointer;
 }
 .productCardTags{
