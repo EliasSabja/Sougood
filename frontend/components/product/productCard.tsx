@@ -27,7 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
         <Image src={require('../../assets/images/' + props.product.image)} className={styles.productCardImage} layout="fill" />
       </div>
       <Row>
-        <Col className={styles.productName + " " + styles.productText}><span>Paquete de regalo</span></Col>
+        <Col className={styles.productName + " " + styles.productText}><span>{props.product.name}</span></Col>
         <Col className={styles.productCategory + " " + styles.productText} onClick={(e) => { e.stopPropagation(); Router.push('/catalog/' + props.product.category) }}><span>{props.product.category}</span></Col>
       </Row>
 

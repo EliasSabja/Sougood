@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import ICartItem from '../../types/cart';
 import CartItem from '../../components/cart/cartItem';
 import styles from '../../assets/styles/components/cart.module.css';
+import { Button } from '../shared/buttons';
 import { CartItemsContext } from '../../contexts/cartContext';
+import CartFooter from './cartFooter';
 
 interface CartProps {
   cartItems: ICartItem[];
@@ -29,7 +31,8 @@ const Cart: React.FC = () => {
           removeFromCart={removeFromCart}
         />
       )}
-      <h2>Total: $ {calculateTotal(cartItems)}</h2>
+
+      <CartFooter total={calculateTotal(cartItems)}></CartFooter>
     </div>
   );
 };

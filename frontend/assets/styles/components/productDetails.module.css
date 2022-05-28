@@ -55,6 +55,11 @@
   border-color: transparent;
 }
 
+.addToCartButton:hover{
+  background-color: #EA4F68;
+  border-color: transparent;
+}
+
 .productDescription {
   height: 80%;
 }
