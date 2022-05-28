@@ -2,8 +2,9 @@
   margin: 10px 15px;
   padding: 0;
   border-radius: 16px;
-  background-color: #E52142;
+  background-color: #97b526;
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   -webkit-box-shadow: 8px 8px 15px 5px rgba(0,0,0,0.5); 
   box-shadow: 8px 8px 15px 5px rgba(0,0,0,0.5);
@@ -43,7 +44,7 @@
   margin-left: 15px;
 }
 
-.productSubcategory {
+.productCategory {
   color: white;
   background-color: transparent;
   text-decoration: none;
@@ -54,8 +55,8 @@
   max-width: 40%;
 }
 
-.productSubcategory:hover {
-  color: #ADBF26;
+.productCategory:hover {
+  color: #EA4F68;
   cursor: pointer;
 }
 .productCardTags{

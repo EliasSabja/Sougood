@@ -2,40 +2,38 @@ import React from 'react';
 import styles from '../../assets/styles/components/productCard.module.css';
 import Image from 'next/image';
 import Router from 'next/router';
-import {Row, Col} from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+import Product from '../../types/product';
 
 interface ProductCardProps {
-  size: string,
-  src: string,
-  tags: string[],
-  productId: number,
-  showDetails: () => void,
+  product: Product;
+  showDetails: (product: Product) => void,
 };
 
-const ProductCard : ReactFC<ProductCardProps>= (props: ProductCardProps) => {
+const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
   const styleOptions = {
     'small': styles.small,
     'medium': styles.medium,
     'large': styles.large,
   };
- 
-  const showDetails = (event) => {
-    props.showDetails(props.productId, props.src);
+
+  const showDetails = () => {
+    props.showDetails(props.product);
   };
 
-  return(
-    <div className={styles.productCard + " " + styleOptions[props.size]} onClick={showDetails}>    
-	    <div className={styles.productCardImageContainer}>	
-	      <Image src={require('../../assets/images/'+props.src)} className={styles.productCardImage} layout="fill"/>
-	    </div>
-	    <Row>
-	    <Col className={styles.productName + " " + styles.productText}><span>Paquete de regalo</span></Col>
-	    <Col className={styles.productSubcategory + " " + styles.productText} onClick={(e) => {e.stopPropagation(); Router.push('/catalog/' + props.subcategory)}}><span>{props.subcategory}</span></Col>
-	    </Row>
-	    
-	    <div className={styles.productCardTags + " " + styles.productText}>
-		    {props.tags.reduce((prevTag, currTag) => "#" + prevTag + " #" + currTag)}
-	    </div>
+  return (
+    <div className={styles.productCard + " " + styleOptions[props.product.size]} onClick={showDetails}>
+      <div className={styles.productCardImageContainer}>
+        <Image src={require('../../assets/images/' + props.product.image)} className={styles.productCardImage} layout="fill" />
+      </div>
+      <Row>
+        <Col className={styles.productName + " " + styles.productText}><span>Paquete de regalo</span></Col>
+        <Col className={styles.productCategory + " " + styles.productText} onClick={(e) => { e.stopPropagation(); Router.push('/catalog/' + props.product.category) }}><span>{props.product.category}</span></Col>
+      </Row>
+
+      <div className={styles.productCardTags + " " + styles.productText}>
+        {props.product.tags.reduce((prevTag, currTag) => "#" + prevTag + " #" + currTag)}
+      </div>
     </div>
   );
 }

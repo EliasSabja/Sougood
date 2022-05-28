@@ -1,10 +1,16 @@
 import React from 'react';
 import NavBar from './header/index';
+import ICartItem from '../../types/cart';
 
-const Layout = ({ children }) => {
-  return(
+interface LayoutProps {
+  children: any;
+  openCart: () => void;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children, openCart }) => {
+  return (
     <React.Fragment>
-      <NavBar />
+      <NavBar openCart={openCart} />
       <main>{children}</main>
     </React.Fragment>
   );

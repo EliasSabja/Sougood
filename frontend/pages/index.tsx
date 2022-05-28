@@ -1,12 +1,10 @@
-import type {ReactElement} from 'react';
-import { useRouter } from 'next/router';
+import { ReactElement, useState } from 'react';
 import CatalogLayout from '../components/catalog/catalogLayout';
 
 const Index: ReactElement = () => {
-
-  return(
-    <CatalogLayout />  
-  ); 
+  return (
+    <CatalogLayout />
+  );
 };
 
 export default Index;
