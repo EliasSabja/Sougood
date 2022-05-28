@@ -29,7 +29,7 @@ const ProductDetails = (props: ProductDetailsProps): ReactElement => {
   }
 
   return (
-    <div className={styles.detailsBox}>
+    <div onClick={closeDetails} className={styles.detailsBox}>
       <div className={styles.detailsElementsContainer} >
         <CloseButton className={styles.closeButton} onClick={closeDetails}></CloseButton>
         <Row>
