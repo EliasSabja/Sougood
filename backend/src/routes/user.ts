@@ -1,6 +1,5 @@
 import { Router, Request, Response } from 'express';
-//import { User } from '../schemas/user';
-//import { IUser, UserPostRequest } from '../types/user';
+import { auth, isAdmin } from '../middlewares/auth';
 const UserController = require('../controllers/userController');
 
 const userRouter = Router();
@@ -14,7 +13,7 @@ userRouter.post("/", async (req: Request, res: Response) => {
   }
 });
 
-userRouter.delete("/", async (req: Request, res: Response) => {
+userRouter.delete("/", auth, isAdmin, async (req: Request, res: Response) => {
   try {
     console.log("Removing all users");
     await UserController.removeUsers();

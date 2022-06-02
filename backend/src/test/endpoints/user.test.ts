@@ -2,9 +2,8 @@ import request from "supertest";
 import { app, stopDb } from "../../index";
 import { User } from "../../schemas/User";
 import mongoose from "mongoose";
-import { idText, isExportDeclaration } from "typescript";
-// Usuario generico de prueba para crear un evento
 
+// Usuario generico de prueba
 const userData = {
   username: "Juan",
   email: "juan@gmail.com",

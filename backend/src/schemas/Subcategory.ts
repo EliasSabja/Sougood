@@ -3,10 +3,11 @@ const { Schema, model } = mongoose;
 import { ISubcategory } from '../types/subcategory';
 
 const SubcategorySchema = new Schema<ISubcategory>({
-  name: String,
+  name: {type: String, unique: true},
   category: {
     type: Schema.Types.ObjectId,
-    ref: "Category"
+    ref: "Category",
+    required: true
   },
 });
 
