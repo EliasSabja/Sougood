@@ -1,17 +1,16 @@
 import type { ReactElement } from "react";
 import { useContext } from "react";
-import { Button, CloseButton, Row, Col } from 'react-bootstrap';
+import { CloseButton, Row, Col } from 'react-bootstrap';
+import { Button } from "../shared/buttons";
 import styles from '../../assets/styles/components/productDetails.module.css';
 import Image from 'next/image';
 import { CartItemsContext } from '../../contexts/cartContext';
 import Product from '../../types/product';
 import { cartItemFromProduct } from '../../utils/cart';
-import ICartItem from "../../types/cart";
 
 export interface ProductDetailsProps {
   handleClose: () => void,
   product: Product,
-  productImageSrc: string,
   top: number,
 }
 
@@ -20,24 +19,25 @@ const ProductDetails = (props: ProductDetailsProps): ReactElement => {
   const { addToCart } = useContext(CartItemsContext);
 
   const handleAddToCart = () => {
-    const cartItem: ICartItem = cartItemFromProduct(props.product);
-    addToCart(cartItem);
+    addToCart(cartItemFromProduct(props.product));
   }
 
-  const closeDetails = () => {
+  const closeDetails = async () => {
     props.handleClose();
   }
 
   return (
-    <div className={styles.detailsBox}>
+    <div onClick={closeDetails} className={styles.detailsBox}>
       <div className={styles.detailsElementsContainer} >
-        <CloseButton className={styles.closeButton} onClick={closeDetails}></CloseButton>
+        <CloseButton className={styles.closeButton} onClick={(e) => { e.stopPropagation(); closeDetails(); }}></CloseButton>
         <Row>
-          <Col> <Image className={styles.productImage} src={require('../../assets/images/' + props.product.image)} width="450px" height="490px"></Image></Col>
+          <Col>
+            <Image className={styles.productImage} src={require('../../assets/images/' + props.product.image)} width="450px" height="490px"></Image>
+          </Col>
           <Col className={styles.productDetails}>
             <Row><b className={styles.productName}>{props.product.name}</b></Row>
             <Row className={styles.productDescription}><p>{props.product.description}</p></Row>
-            <Row className={styles.addToCartButtonContainer}><Button className={styles.addToCartButton} onClick={() => handleAddToCart()} >Agregar al carrito</Button></Row>
+            <Row className={styles.addToCartButtonContainer}><Button onClick={handleAddToCart} text={"Agregar al carrrito"} /></Row>
           </Col>
         </Row>
       </div>

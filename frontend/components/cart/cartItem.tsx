@@ -15,24 +15,24 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
     <div className={styles.cartItem}>
       <h3>{item.name}</h3>
       <div className={styles.information}>
-        <p>Precio unitario: $ {item.price}</p>
+        <p>Precio: $ {item.price}</p>
         <p>Total: $ {(item.price * item.amount)}</p>
       </div>
       <div className={styles.buttons}>
         <Button
-          size="small"
+          size="sm"
           variant="outline-success"
           onClick={() => removeFromCart(item.id)}
         > - </Button>
-        <p>{item.amount}</p>
+        <p>Cantidad: {item.amount}</p>
         <Button
-          size="small"
+          size="sm"
           variant="outline-success"
           onClick={() => addToCart(item)}
         > + </Button>
       </div>
     </div>
-    <Image className={styles.productImage} src={require('../../assets/images/' + item.image)} width="120px" height="80px"></Image>
+    <Image className={styles.productImage} src={require('../../assets/images/' + item.image)} width="120px" height="90px"></Image>
 
   </div>
 );

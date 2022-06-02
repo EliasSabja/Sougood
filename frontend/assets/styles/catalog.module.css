@@ -25,15 +25,17 @@
 }
 
 .backup{
-
   background-color: #cdcdcd;
 }
-.subcategoryContainer{
+.categoryContainer{
   width: 35%;
-  margin: 0 auto;
+  left: 50%;
+  transform: translate(-50%, 0);
   height: 45px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 10px;
-  max-width: 100%;
+  position: absolute;
   justify-content: center;
   text-align: center;
   color: white;
@@ -41,7 +43,7 @@
   border-radius: 15px;
 }
 
-.subcategory{
+.category{
   font-size: 36px;
   font-weight: bold;
   font-family: 'Brush Script MT', cursive;
