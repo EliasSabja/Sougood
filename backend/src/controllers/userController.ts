@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
-import { User } from '../schemas/user';
+import { User } from '../schemas/User';
 import { UserPostRequest } from '../types/user';
 
 const createUser = async (request: UserPostRequest) => {

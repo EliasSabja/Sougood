@@ -1,5 +1,5 @@
 import { Router, Response, Request } from 'express';
-import { User } from '../schemas/user';
+import { User } from '../schemas/User';
 import { AuthRequest } from '../types/auth';
 
 const LoginController = require('../controllers/loginController');

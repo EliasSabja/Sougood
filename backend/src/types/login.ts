@@ -1,4 +1,4 @@
-import { User } from '../schemas/user';
+import { User } from '../schemas/User';
 
 export interface UserData {
   email: string;

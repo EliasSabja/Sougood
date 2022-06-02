@@ -1,4 +1,4 @@
-import { User } from '../schemas/user';
+import { User } from '../schemas/User';
 import { LoginResponse, UserData } from '../types/login';
 import { LoginBody } from '../types/auth';
 
