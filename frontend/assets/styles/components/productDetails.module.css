@@ -49,17 +49,6 @@
   justify-content: center;
 }
 
-.addToCartButton {
-  width: 50%;
-  background-color: #96b522;
-  border-color: transparent;
-}
-
-.addToCartButton:hover{
-  background-color: #EA4F68;
-  border-color: transparent;
-}
-
 .productDescription {
   height: 80%;
 }

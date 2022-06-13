@@ -14,7 +14,7 @@ interface CartProps {
 
 const Cart: React.FC = () => {
   const calculateTotal = (items: ICartItem) => {
-    return items.reduce((ack: number, item) => ack + (item.amount * item.price), 0)
+    return items.reduce((ack: number, item: ICartItem) => ack + (item.amount * item.price), 0)
   }
 
   const { cartItems, addToCart, removeFromCart } = useContext(CartItemsContext);
