@@ -7,6 +7,7 @@ import Image from 'next/image';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CategoryItem from './CategoryItem';
 import styles from '../../../assets/styles/header.module.css';
+import { useUserContext } from '../../../contexts/userContext';
 
 const CATEGORIES = [ 
   { 
@@ -50,6 +51,7 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
+  const {token, removeToken} = useUserContext();
   const router = useRouter();
   const { getTotalItems, cartItems } = useCartItemsContext();
   const [categories, setCategories] = useState([]);
@@ -73,7 +75,10 @@ const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
           {listCategories}
         </Nav>
         <Nav>
-          <Button onClick={() => router.push('register')} className={styles.iconButton} variant="outline-success">Ingresar</Button>
+          {token ? 
+            <Button onClick={() => {removeToken(); router.reload()}} className={styles.iconButton} variant="outline-success">Cerrar sesión</Button> : 
+            <Button onClick={() => router.push('register')} className={styles.iconButton} variant="outline-success">Ingresar</Button>
+          }
           <Badge badgeContent={getTotalItems(cartItems)} color="error">
             <Button onClick={openCart} className={styles.iconButton} variant="outline-success"><ShoppingCartIcon /></Button>
           </Badge>

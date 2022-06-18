@@ -8,6 +8,7 @@ import Head from 'next/head';
 import Cart from '../components/cart/cart';
 import { Drawer } from '@mui/material';
 import { CartProvider } from '../contexts/cartContext';
+import { UserProvider } from '../contexts/userContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
@@ -17,14 +18,16 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="shortcut icon" href="/images/favicon.ico" />
       </Head>
-      <CartProvider>
-        <Layout openCart={() => setIsCartOpen(true)}>
-          <Drawer anchor="right" open={isCartOpen} onClose={() => setIsCartOpen(false)}>
-            <Cart />
-          </Drawer>
-          <Component {...pageProps} />
-        </Layout>
-      </CartProvider>
+      <UserProvider>
+        <CartProvider>
+          <Layout openCart={() => setIsCartOpen(true)}>
+            <Drawer anchor="right" open={isCartOpen} onClose={() => setIsCartOpen(false)}>
+              <Cart />
+            </Drawer>
+            <Component {...pageProps} />
+          </Layout>
+        </CartProvider>
+      </UserProvider>
     </SSRProvider>
   );
 }
