@@ -9,7 +9,7 @@ interface Props {
 
 function CategoryItem({ category, subcategories, componentStyle }: Props) {
 
-  const listSubcategories = subcategories.map(subcategory => <NavDropdown.Item href={"/catalog/category/" + subcategory}>{subcategory}</NavDropdown.Item>);
+  const listSubcategories = subcategories.map((subcategory, index) => <NavDropdown.Item key={index} href={"/catalog/category/" + subcategory}>{subcategory}</NavDropdown.Item>);
 
   return (
     <NavDropdown title={<span className={componentStyle}>{category}</span>}>
