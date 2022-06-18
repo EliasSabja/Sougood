@@ -10,6 +10,7 @@ import CategoryItem from './CategoryItem';
 
 const CATEGORIES = [ 
   { 
+    id: 1,
     name: "Bienestar Ambiental, Animal y Humano",
     subcategories: [
     "Carta Menú", "Cosmética natural & productos funcionales",
@@ -18,6 +19,7 @@ const CATEGORIES = [
     ]
   },
   {
+    id: 2,
     name: "Bazar / General Store",
     subcategories: [
     "Arte & Decoración", "Materiales & Herramientas",
@@ -25,6 +27,7 @@ const CATEGORIES = [
     ],
   },
   {
+    id: 3,
     name:"Vida Sostenible",
     subcategories: [
     "Handyman & Servicios profesionales", "Bioconstrucción",
@@ -33,6 +36,7 @@ const CATEGORIES = [
     ]
   },
   {
+    id: 4,
     name: "Clubes del buen vivir",
     subcategories: [
     "Huertas Comunitarias", "Trueques", "Mascotas",
@@ -56,7 +60,7 @@ const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
 
   }, [])
   
-  const listCategories = categories.map(category => <CategoryItem category={category.name} subcategories={category.subcategories} componentStyle={styles.category}/>);
+  const listCategories = categories.map(category => <CategoryItem key={category.id} category={category.name} subcategories={category.subcategories} componentStyle={styles.category}/>);
 
   return (
     <Navbar collapseOnSelect className={styles.navBar} expand="lg">
