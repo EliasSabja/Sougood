@@ -1,16 +1,16 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import ICartItem from '../types/cart';
 
-interface ICartItemsContext {
+type ICartItemsContext = {
   cartItems: ICartItem[],
   getTotalItems: (items: ICartItem[]) => number,
   addToCart: (newItem: ICartItem) => void,
   removeFromCart: (id: string) => void,
-}
+} | null;
 
-export const CartItemsContext = createContext<ICartItemsContext>();
+export const CartItemsContext = createContext<ICartItemsContext>(null);
 
-export const CartProvider: React.FC = ({ children }) => {
+export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState<ICartItem[]>([]);
 
   useEffect(() => {
@@ -57,3 +57,10 @@ export const CartProvider: React.FC = ({ children }) => {
   );
 };
 
+
+export function useCartItemsContext() {
+  const context = useContext(CartItemsContext);
+  if (!context)
+    throw new Error('useCartItemContext must be used whitin a AppContextProvider');
+  return context;
+}

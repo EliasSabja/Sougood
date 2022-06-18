@@ -55,7 +55,7 @@ interface CatalogLayoutProps {
   category?: string,
 }
 
-const CatalogLayout: ReactElement<CatalogLayoutProps> = (props: CatalogLayoutProps) => {
+const CatalogLayout: React.FC<CatalogLayoutProps> = (props: CatalogLayoutProps) => {
   const [products, setProducts] = useState<Product[]>();
   const [category, setCategory] = useState<string>(props.category);
   const [isShowingDetails, setIsShowingDetails] = useState<boolean>(false);

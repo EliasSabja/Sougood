@@ -1,12 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
-import styles from '../../../assets/styles/header.module.css';
-import { FaSearch } from 'react-icons/fa';
-import { Navbar, Nav, Container, Form, Button, FormControl } from 'react-bootstrap';
-import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import { useCartItemsContext } from '../../../contexts/cartContext';
+import { useRouter } from 'next/router';
+import { Navbar, Nav, Container, Button}  from 'react-bootstrap';
 import { Badge } from '@mui/material';
+import Image from 'next/image';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { CartItemsContext } from '../../../contexts/cartContext';
 import CategoryItem from './CategoryItem';
+import styles from '../../../assets/styles/header.module.css';
 
 const CATEGORIES = [ 
   { 
@@ -50,8 +50,8 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
-
-  const { getTotalItems, cartItems } = useContext(CartItemsContext);
+  const router = useRouter();
+  const { getTotalItems, cartItems } = useCartItemsContext();
   const [categories, setCategories] = useState([]);
   
   useEffect(() => {
@@ -59,7 +59,7 @@ const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
     setCategories(CATEGORIES);
 
   }, [])
-  
+
   const listCategories = categories.map(category => <CategoryItem key={category.id} category={category.name} subcategories={category.subcategories} componentStyle={styles.category}/>);
 
   return (
@@ -73,16 +73,7 @@ const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
           {listCategories}
         </Nav>
         <Nav>
-          <Nav.Link href="#deets"><span className={styles.category}>Ingresar</span></Nav.Link>
-          <Form className="d-flex">
-            <FormControl
-              type="search"
-              placeholder="Buscar"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button className={styles.iconButton} variant="outline-success"><FaSearch /></Button>
-          </Form>
+          <Button onClick={() => router.push('register')} className={styles.iconButton} variant="outline-success">Ingresar</Button>
           <Badge badgeContent={getTotalItems(cartItems)} color="error">
             <Button onClick={openCart} className={styles.iconButton} variant="outline-success"><ShoppingCartIcon /></Button>
           </Badge>

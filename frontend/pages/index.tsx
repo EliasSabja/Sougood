@@ -1,7 +1,7 @@
 import { ReactElement, useState } from 'react';
 import CatalogLayout from '../components/catalog/catalogLayout';
 
-const Index: ReactElement = () => {
+const Index: React.FC = () => {
   return (
     <CatalogLayout />
   );
