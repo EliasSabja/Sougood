@@ -3,9 +3,7 @@ const axios = require('axios');
 //const url = process.env.API_URL;
 const url = 'http://localhost:8000/api';
 
-export const login = async (email: string, password: string): Promise<[string, null] | [string, string]>=> {
-  let token = "";
-
+export const login = async (email: string, password: string): Promise<[string, string, null] | [string, string, string]>=> {
   const data = {
     email,
     password
@@ -22,9 +20,9 @@ export const login = async (email: string, password: string): Promise<[string, n
 
   try {
     const response = await axios(config);
-    return [response.data.token, null];
+    return [response.data.token, response.data.role, null];
   } catch (e: any) {
-    return [token, `${e.code}: ${e.message}`];
+    return ["", "", `${e.code}: ${e.message}`];
   }
 }
 

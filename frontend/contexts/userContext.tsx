@@ -1,33 +1,40 @@
+import { useRouter } from 'next/router';
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import ICartItem from '../types/cart';
 
 type IUserContext = {
   token: string,
   setToken: (newToken: string) => void,
-  removeToken: () => void
+  removeToken: () => void,
+  role: string,
+  setRole: (newRole: string) => void
 } | null;
 
 export const UserContext = createContext<IUserContext>(null);
 
 export const UserProvider = ({ children }) => {
+  const router = useRouter();
   const [token, setToken] = useState<string>("");
-
-  // useEffect(() => {
-    
-  // }, []);
+  const [role, setRole] = useState<string>("");
 
   const removeToken = () => {
     setToken("");
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
+    router.reload();
   }
 
   useEffect(() => {
-    if (token) sessionStorage.setItem('token', token);
-    if (sessionStorage.getItem('token')) setToken(sessionStorage.getItem('token')!);
+    if (token) localStorage.setItem('token', token);
+    if (localStorage.getItem('token')) setToken(localStorage.getItem('token')!);
   }, [token]);
 
+  useEffect(() => {
+    if (role) localStorage.setItem('role', role);
+    if (localStorage.getItem('role')) setRole(localStorage.getItem('role')!);
+  }, [role]);
+
   return (
-    <UserContext.Provider value={{ token, setToken, removeToken }}>
+    <UserContext.Provider value={{ token, setToken, removeToken, role, setRole}}>
       {children}
     </UserContext.Provider>
   );

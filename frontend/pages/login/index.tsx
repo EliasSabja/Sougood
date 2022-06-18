@@ -6,7 +6,7 @@ import { login } from '../../lib/user';
 
 const Login: React.FC = () => {
   const router = useRouter();
-  const { token, setToken } = useUserContext();
+  const { setToken, setRole } = useUserContext();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
@@ -25,10 +25,14 @@ const Login: React.FC = () => {
 
   const handleLogin = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const [newToken, err] = await login(email, password);
+    const [newToken, newRole, err] = await login(email, password);
     if (err) setError(true);
+    console.log(newToken, newRole);
+    
     setToken(newToken);
-    router.push('catalog')
+    setRole(newRole);
+    if (newRole == 'admin')router.push('management');
+    if (newRole == 'user') router.push('catalog'); 
   };
 
   return (

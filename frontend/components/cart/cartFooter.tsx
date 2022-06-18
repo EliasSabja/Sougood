@@ -21,7 +21,7 @@ const CartFooter = (props: Props) => {
         <h3>Total: $ {total}</h3>
       </div>
       <div className={styles.organizationSelector}>
-        <h5>¿A qué organización deseas donar el 10% de tu compra?</h5>
+        <h5>¿A qué organización deseas que nosotros donemos el 20% de tu compra?</h5>
         <OrganizationSelector></OrganizationSelector>
       </div>
       <Button onClick={() => console.log("Compra por implementar")} text={"Ir a pagar"} />

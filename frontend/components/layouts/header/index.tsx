@@ -51,7 +51,7 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
-  const {token, removeToken} = useUserContext();
+  const {token, role, removeToken} = useUserContext();
   const router = useRouter();
   const { getTotalItems, cartItems } = useCartItemsContext();
   const [categories, setCategories] = useState([]);
@@ -59,7 +59,6 @@ const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
   useEffect(() => {
     // Fetch categories from backend
     setCategories(CATEGORIES);
-
   }, [])
 
   const listCategories = categories.map(category => <CategoryItem key={category.id} category={category.name} subcategories={category.subcategories} componentStyle={styles.category}/>);
@@ -75,8 +74,12 @@ const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
           {listCategories}
         </Nav>
         <Nav>
+          { role == 'admin' ?
+            <>Admin</> : 
+            <>Not admin</>
+          }
           {token ? 
-            <Button onClick={() => {removeToken(); router.reload()}} className={styles.iconButton} variant="outline-success">Cerrar sesión</Button> : 
+            <Button onClick={() => removeToken()} className={styles.iconButton} variant="outline-success">Cerrar sesión</Button> : 
             <Button onClick={() => router.push('register')} className={styles.iconButton} variant="outline-success">Ingresar</Button>
           }
           <Badge badgeContent={getTotalItems(cartItems)} color="error">
