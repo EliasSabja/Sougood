@@ -1,7 +1,6 @@
-import type { ReactElement } from 'react';
 import CatalogLayout from '../../components/catalog/catalogLayout';
 
-const Catalog: ReactElement = () => {
+const Catalog: React.FC = () => {
   return (
     <CatalogLayout></CatalogLayout>
   );
