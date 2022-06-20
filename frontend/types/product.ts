@@ -1,12 +1,14 @@
+import Category from "./category";
+import Subcategory from "./subcategory";
 
 export default interface Product {
-  id: string;
+  _id: string;
   name: string;
-  category: string;
+  category: Category;
   description: string;
   image: string;
   price: number;
-  subcategory: string;
+  subcategory: Subcategory;
   tags: string[];
   stock: number;
   size: string;

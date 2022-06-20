@@ -26,9 +26,7 @@ const Login: React.FC = () => {
   const handleLogin = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const [newToken, newRole, err] = await login(email, password);
-    if (err) setError(true);
-    console.log(newToken, newRole);
-    
+    if (err) setError(true);    
     setToken(newToken);
     setRole(newRole);
     if (newRole == 'admin')router.push('management');

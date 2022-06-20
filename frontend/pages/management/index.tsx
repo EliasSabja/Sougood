@@ -1,16 +1,14 @@
-import { useEffect } from "react";
+import { useRouter } from "next/router";
 import { useUserContext } from "../../contexts/userContext";
+import UseAuth from "../../lib/auth";
 
 const Management: React.FC = () => {
-  const {token} = useUserContext();
-
-  useEffect(() => {
-    console.log(token);
-  }, [token]);
+  const {role} = useUserContext();
+  const router = useRouter();
 
   return (
     <h1>Management</h1>
   );
 };
 
-export default Management;
+export default UseAuth(Management, ['admin']);

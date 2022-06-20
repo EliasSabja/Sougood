@@ -1,7 +1,7 @@
 const axios = require('axios');
-
+import { API_URL } from '../config/config';
 //const url = process.env.API_URL;
-const url = 'http://localhost:8000/api';
+//const url = 'http://localhost:8000/api';
 
 export const login = async (email: string, password: string): Promise<[string, string, null] | [string, string, string]>=> {
   const data = {
@@ -11,7 +11,7 @@ export const login = async (email: string, password: string): Promise<[string, s
 
   const config = {
     method: 'post',
-    url: `${url}/login`,
+    url: `${API_URL}/login`,
     headers: {
       'Content-Type': 'application/json'
     },
@@ -26,17 +26,15 @@ export const login = async (email: string, password: string): Promise<[string, s
   }
 }
 
-export const register = (email: string, password: string) => {
+export const register = async (email: string, password: string) => {
   const data = {
     email,
     password
   };
 
-  console.log(data);
-  
   const config = {
     method: 'post',
-    url: `${url}/user`,
+    url: `${API_URL}/user`,
     headers: {
       'Content-Type': 'application/json'
     },
@@ -45,8 +43,6 @@ export const register = (email: string, password: string) => {
 
   axios(config)
     .then((response: any) => {
-      console.log("Response");
-      console.log(response);
       return response;
     })
     .catch((err: any) => alert(err))

@@ -6,6 +6,7 @@ import styles from "../../assets/styles/components/cart.module.css";
 import buttonStyle from "../../assets/styles/components/buttons.module.css";
 
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 type Props = {
   item: ICartItem;
@@ -13,7 +14,15 @@ type Props = {
   removeFromCart: (id: string) => void;
 };
 
-const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
+const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
+  const [image, setImage] = useState<string>("image-default.png");
+
+  useEffect(() => {
+    console.log(item);
+    if (item.image) setImage(item.image);
+  }, [item]);
+
+  return (
   <div className={styles.cartItemContainer}>
     <div className={styles.cartItem}>
       <h3>{item.name}</h3>
@@ -37,9 +46,10 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
         > + </Button>
       </div>
     </div>
-    <Image className={styles.productImage} src={require('../../assets/images/' + item.image)} width="120px" height="90px"></Image>
+    { image && <Image className={styles.productImage} src={require('../../assets/images/' + image)} width="120px" height="90px"></Image>}
 
   </div>
 );
+}
 
 export default CartItem;

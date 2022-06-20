@@ -41,12 +41,12 @@
 
 .information, .buttons {
   display: flex;
-  margin-right: 5px;
   justify-content: space-between;
 }
 
 .cartItem {
   padding-right: 5px;
+  justify-content: space-between;
 }
 
 .productImage {

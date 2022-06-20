@@ -8,6 +8,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CategoryItem from './CategoryItem';
 import styles from '../../../assets/styles/header.module.css';
 import { useUserContext } from '../../../contexts/userContext';
+import { getCategories } from '../../../lib/categories';
+import { createPortal } from 'react-dom';
 
 const CATEGORIES = [ 
   { 
@@ -21,7 +23,7 @@ const CATEGORIES = [
   },
   {
     id: 2,
-    name: "Bazar / General Store",
+    name: "Bazar",
     subcategories: [
     "Arte & Decoración", "Materiales & Herramientas",
     "Bazar", "Limpieza"
@@ -58,10 +60,10 @@ const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
   
   useEffect(() => {
     // Fetch categories from backend
-    setCategories(CATEGORIES);
+    getCategories().then(categories => setCategories(categories)).catch(e => alert(e));
   }, [])
 
-  const listCategories = categories.map(category => <CategoryItem key={category.id} category={category.name} subcategories={category.subcategories} componentStyle={styles.category}/>);
+  const listCategories = categories.map(category => <CategoryItem key={category._id} category={category.name} subcategories={category.subcategories} componentStyle={styles.category}/>);
 
   return (
     <Navbar collapseOnSelect className={styles.navBar} expand="lg">
@@ -69,14 +71,12 @@ const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
         <Navbar.Brand className={styles.navBarBrand} href="/catalog">
           <Image src={require('../../../assets/images/logoSougood.png')} width="200px" height="60px"></Image>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Nav className='justify-content-around flex-grow-1 pe-3' >
           {listCategories}
         </Nav>
         <Nav>
-          { role == 'admin' ?
-            <>Admin</> : 
-            <>Not admin</>
+          { role == 'admin' &&
+            <Button onClick={() => router.push('management')} className={styles.iconButton} variant="outline-success">Administrar</Button>
           }
           {token ? 
             <Button onClick={() => removeToken()} className={styles.iconButton} variant="outline-success">Cerrar sesión</Button> : 

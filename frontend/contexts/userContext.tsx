@@ -19,18 +19,19 @@ export const UserProvider = ({ children }) => {
 
   const removeToken = () => {
     setToken("");
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('role');
     router.reload();
   }
 
   useEffect(() => {
-    if (token) localStorage.setItem('token', token);
-    if (localStorage.getItem('token')) setToken(localStorage.getItem('token')!);
+    if (token) sessionStorage.setItem('token', token);
+    if (sessionStorage.getItem('token')) setToken(sessionStorage.getItem('token')!);
   }, [token]);
 
   useEffect(() => {
-    if (role) localStorage.setItem('role', role);
-    if (localStorage.getItem('role')) setRole(localStorage.getItem('role')!);
+    if (role) sessionStorage.setItem('role', role);
+    if (sessionStorage.getItem('role')) setRole(sessionStorage.getItem('role')!);
   }, [role]);
 
   return (
