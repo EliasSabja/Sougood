@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Container, Row } from 'react-bootstrap';
 import { register } from '../../lib/user';
 
 const Register: React.FC = () => {
@@ -29,7 +29,9 @@ const Register: React.FC = () => {
   }
 
   return (
-    <form className={`border p-4 m-5 w-25 mx-auto`} onSubmit={handleSubmit}>
+    <Container fluid>
+    <Row xl={3} lg={2} md={2} sm={2}>
+    <Form className={`border p-4 m-5 mx-auto`} onSubmit={handleSubmit}>
       <h1 className='text-center m-3'>Registro de cuenta</h1>
         <div className='mt-4'>
           <Form.Label>Email</Form.Label>
@@ -51,7 +53,9 @@ const Register: React.FC = () => {
           Submit
         </button>
       </div>
-    </form>
+    </Form>
+    </Row>
+    </Container>
   );
 };
 

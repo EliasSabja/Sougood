@@ -9,7 +9,6 @@ import CategoryItem from './CategoryItem';
 import styles from '../../../assets/styles/header.module.css';
 import { useUserContext } from '../../../contexts/userContext';
 import { getCategories } from '../../../lib/categories';
-import { createPortal } from 'react-dom';
 
 const CATEGORIES = [ 
   { 

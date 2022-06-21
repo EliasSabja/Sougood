@@ -1,13 +1,13 @@
-import { useRouter } from "next/router";
-import { useUserContext } from "../../contexts/userContext";
 import UseAuth from "../../lib/auth";
+import ManagementPanel from "../../components/management/managementPanel";
 
 const Management: React.FC = () => {
-  const {role} = useUserContext();
-  const router = useRouter();
 
   return (
-    <h1>Management</h1>
+    <div className="mx-auto mt-5 text-center">
+      <h1 className="mb-5">Panel de administración</h1>
+      <ManagementPanel></ManagementPanel>
+    </div>
   );
 };
 
