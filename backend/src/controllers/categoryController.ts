@@ -20,7 +20,7 @@ const createCategory = async (request: ICategory) => {
 
 const getCategories = async () => {
     try {
-        const categories = await Category.find();
+        const categories = await Category.find().populate("subcategories");
         return categories;
     } catch (err: any) {
         throw err;

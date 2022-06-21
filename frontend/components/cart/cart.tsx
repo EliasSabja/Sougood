@@ -3,7 +3,7 @@ import ICartItem from '../../types/cart';
 import CartItem from '../../components/cart/cartItem';
 import styles from '../../assets/styles/components/cart.module.css';
 import { Button } from '../shared/buttons';
-import { CartItemsContext } from '../../contexts/cartContext';
+import { useCartItemsContext } from '../../contexts/cartContext';
 import CartFooter from './cartFooter';
 
 interface CartProps {
@@ -17,7 +17,7 @@ const Cart: React.FC = () => {
     return items.reduce((ack: number, item: ICartItem) => ack + (item.amount * item.price), 0)
   }
 
-  const { cartItems, addToCart, removeFromCart } = useContext(CartItemsContext);
+  const { cartItems, addToCart, removeFromCart } = useCartItemsContext();
 
   return (
     <div className={styles.cartContainer}>

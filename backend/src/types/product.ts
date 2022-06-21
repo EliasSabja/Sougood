@@ -7,7 +7,7 @@ export interface IProduct {
     description: string;
     category: ICategory;
     subcategory: ISubcategory;
-    merchandiser: IUser;
+    seller: IUser;
     price: number;
     stock: number;
     imageUrl: string;

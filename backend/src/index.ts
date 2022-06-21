@@ -1,8 +1,9 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, NextFunction, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import routes from './routes/index';
 
+const cors = require('cors');
 
 const { MongoMemoryServer } = require("mongodb-memory-server"); // To create a mock DB with mongo for testing
 let mongo: any = undefined; // Needs to be stopped when creating MongoMemoryServer for testing
@@ -14,6 +15,7 @@ export const stopDb = async () => {
 dotenv.config(); // .env Configuration
 
 export const app: Express = express();
+app.use(cors())
 const port = process.env.PORT;
 
 const run = async () => {

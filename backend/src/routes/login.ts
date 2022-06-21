@@ -10,7 +10,7 @@ loginRouter.post("/", async (req: Request, res: Response) => {
 
   const token = LoginController.generateToken(user)!;
 
-  return res.status(200).json({token, message});
+  return res.status(200).json({token, role: user.role, message});
 });
 
 module.exports = loginRouter;

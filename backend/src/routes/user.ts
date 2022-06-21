@@ -6,6 +6,7 @@ const userRouter = Router();
 
 userRouter.post("/", async (req: Request, res: Response) => {
   try{
+    if (!req.body.role) req.body.role = 'user';
     const user = await UserController.createUser(req.body);
     return res.status(201).send(user);
   } catch (err: any) {
