@@ -11,5 +11,19 @@ export default interface Product {
   subcategory: Subcategory;
   tags: string[];
   stock: number;
+  seller: string;
   size: string;
+}
+
+export interface CreateProduct {
+  name: string;
+  category: string;
+  subcategory: string;
+  description: string;
+  image?: string;
+  price: number;
+  stock: number;
+  size: string;
+  tags: string[];
+  seller: string;
 }
