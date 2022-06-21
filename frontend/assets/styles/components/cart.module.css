@@ -43,6 +43,9 @@
   display: flex;
   justify-content: space-between;
 }
+.information p {
+  padding-right: 5px;
+}
 
 .cartItem {
   padding-right: 5px;

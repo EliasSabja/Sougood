@@ -15,16 +15,16 @@ const ProductSchema = new Schema<IProduct>({
     ref: "Subcategory",
     required: true
   },
-  merchandiser: {
+  seller: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true
   },
-  price: { Number, required: true},
-  stock: { Number, required: true},
+  price: { type: Number, required: true},
+  stock: { type: Number, required: true},
   imageUrl: { type: String, required: false},
   size: { type: String, required: true},
-  tags: [{ type: String, required: false}],
+  tags: [{ type: String, required: false}]
 });
 
 export const Product = model<IProduct>("Product", ProductSchema);
