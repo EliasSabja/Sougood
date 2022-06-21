@@ -18,7 +18,6 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
   const [image, setImage] = useState<string>("image-default.png");
 
   useEffect(() => {
-    console.log(item);
     if (item.image) setImage(item.image);
   }, [item]);
 

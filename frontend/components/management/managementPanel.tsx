@@ -17,7 +17,7 @@ const ManagementPanel = () => {
       {routes.map((route, index) => {
         return (
           <li key={index} className={`nav-link fs-4`}>
-            <Button className="w-25" onClick={() => router.push(route.href)} variant="outline-success">{route.title}</Button>
+            <Button className="w-25" onClick={() => router.push(`/${route.href}`)} variant="outline-success">{route.title}</Button>
           </li>
         );
       })}

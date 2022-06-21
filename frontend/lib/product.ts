@@ -1,8 +1,8 @@
 const axios = require('axios');
 import { API_URL } from "../config/config";
-import Product from "../types/product";
+import Product, {CreateProduct} from "../types/product";
 
-export const getProducts = async (): Promise<Product[]>=> {
+export const getProducts = async (): Promise<Product[]> => {
   let products = [];
 
   const config = {
@@ -19,4 +19,24 @@ export const getProducts = async (): Promise<Product[]>=> {
   }
 
   return products;
+}
+
+export const addProduct = async (product: CreateProduct, token: string) => {
+  const data = JSON.stringify(product);
+  
+  const config = {
+    method: 'post',
+    url: `${API_URL}/product`,
+    headers: { 
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    },
+    data
+  };
+  try {
+    const response = await axios(config);
+    return response;
+  } catch (e: any) {
+    throw e;
+  }
 }

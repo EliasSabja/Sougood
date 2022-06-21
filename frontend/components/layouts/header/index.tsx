@@ -10,42 +10,42 @@ import styles from '../../../assets/styles/header.module.css';
 import { useUserContext } from '../../../contexts/userContext';
 import { getCategories } from '../../../lib/categories';
 
-const CATEGORIES = [ 
-  { 
-    id: 1,
-    name: "Bienestar Ambiental, Animal y Humano",
-    subcategories: [
-    "Carta Menú", "Cosmética natural & productos funcionales",
-    "Insumos y Abarrotes saludables", "Agricultura", "Cuidado de enfermos",
-    "Implementos deportivos"
-    ]
-  },
-  {
-    id: 2,
-    name: "Bazar",
-    subcategories: [
-    "Arte & Decoración", "Materiales & Herramientas",
-    "Bazar", "Limpieza"
-    ],
-  },
-  {
-    id: 3,
-    name:"Vida Sostenible",
-    subcategories: [
-    "Handyman & Servicios profesionales", "Bioconstrucción",
-    "Tecnología, Automatización & Electrónica", "Corretaje & Propiedades",
-    "Recreación & Turismo", "Delivery"
-    ]
-  },
-  {
-    id: 4,
-    name: "Clubes del buen vivir",
-    subcategories: [
-    "Huertas Comunitarias", "Trueques", "Mascotas",
-    "Guías & Scouts", "Donaciones", "Deportes", "Artes & Hobbies"
-    ]
-  }
-];
+// const CATEGORIES = [ 
+//   { 
+//     id: 1,
+//     name: "Bienestar Ambiental, Animal y Humano",
+//     subcategories: [
+//     "Carta Menú", "Cosmética natural & productos funcionales",
+//     "Insumos y Abarrotes saludables", "Agricultura", "Cuidado de enfermos",
+//     "Implementos deportivos"
+//     ]
+//   },
+//   {
+//     id: 2,
+//     name: "Bazar",
+//     subcategories: [
+//     "Arte & Decoración", "Materiales & Herramientas",
+//     "Bazar", "Limpieza"
+//     ],
+//   },
+//   {
+//     id: 3,
+//     name:"Vida Sostenible",
+//     subcategories: [
+//     "Handyman & Servicios profesionales", "Bioconstrucción",
+//     "Tecnología, Automatización & Electrónica", "Corretaje & Propiedades",
+//     "Recreación & Turismo", "Delivery"
+//     ]
+//   },
+//   {
+//     id: 4,
+//     name: "Clubes del buen vivir",
+//     subcategories: [
+//     "Huertas Comunitarias", "Trueques", "Mascotas",
+//     "Guías & Scouts", "Donaciones", "Deportes", "Artes & Hobbies"
+//     ]
+//   }
+// ];
 
 interface NavBarProps {
   openCart: () => void;
@@ -75,11 +75,11 @@ const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
         </Nav>
         <Nav>
           { role == 'admin' &&
-            <Button onClick={() => router.push('management')} className={styles.iconButton} variant="outline-success">Administrar</Button>
+            <Button onClick={() => router.push('/management')} className={styles.iconButton} variant="outline-success">Administrar</Button>
           }
           {token ? 
             <Button onClick={() => removeToken()} className={styles.iconButton} variant="outline-success">Cerrar sesión</Button> : 
-            <Button onClick={() => router.push('register')} className={styles.iconButton} variant="outline-success">Ingresar</Button>
+            <Button onClick={() => router.push('/register')} className={styles.iconButton} variant="outline-success">Ingresar</Button>
           }
           <Badge badgeContent={getTotalItems(cartItems)} color="error">
             <Button onClick={openCart} className={styles.iconButton} variant="outline-success"><ShoppingCartIcon /></Button>

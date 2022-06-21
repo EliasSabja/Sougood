@@ -1,4 +1,3 @@
-import { ObjectId } from 'mongoose';
 import { ISubcategory } from './subcategory';
 
 export interface ICategory {

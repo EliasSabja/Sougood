@@ -1,11 +1,17 @@
 import { Types } from 'mongoose';
 import { Product } from '../schemas/Product';
+import { User } from '../schemas/User';
 import { IProduct } from '../types/product';
 
-const jwt = require('jsonwebtoken')
+interface CreateProduct extends Omit<IProduct, 'seller'> {
+  seller: Types.ObjectId
+}
 
-const createProduct = async (request: IProduct): Promise<IProduct> => {
+const createProduct = async (request: CreateProduct): Promise<IProduct> => {
   try {
+    const sellerUser = await User.findOne({ email: request.seller});
+    if (!sellerUser) throw new Error("Proveedor no encontrado");
+    request.seller = sellerUser._id;
     const product = new Product(request);
     await product.save();
     return product;
