@@ -21,7 +21,9 @@ export const getProducts = async (): Promise<Product[]> => {
   return products;
 }
 
-export const addProduct = async (product: CreateProduct, token: string) => {
+export const addProduct = async (product: CreateProduct, token: string, imageUrl: string) => {
+  product.imageUrl = imageUrl;
+
   const data = JSON.stringify(product);
   
   const config = {
@@ -37,6 +39,7 @@ export const addProduct = async (product: CreateProduct, token: string) => {
     const response = await axios(config);
     return response;
   } catch (e: any) {
+    console.log(e);
     throw e;
   }
 }

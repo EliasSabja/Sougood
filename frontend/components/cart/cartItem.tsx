@@ -1,6 +1,4 @@
-//import Button from "@mui/material/Button";
 import { Button } from 'react-bootstrap';
-//import Button from '../shared/buttons';
 import ICartItem from "../../types/cart";
 import styles from "../../assets/styles/components/cart.module.css";
 import buttonStyle from "../../assets/styles/components/buttons.module.css";

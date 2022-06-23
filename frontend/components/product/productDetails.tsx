@@ -19,7 +19,7 @@ const ProductDetails = (props: ProductDetailsProps): ReactElement => {
 
   useEffect(() => {
     setProduct(props.product)
-    if (props.product.image) setImage(props.product.image);
+    if (props.product.imageUrl) setImage(props.product.imageUrl);
   }, [props.product]);
 
   const { addToCart } = useCartItemsContext();

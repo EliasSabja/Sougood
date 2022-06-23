@@ -6,7 +6,7 @@ export default interface Product {
   name: string;
   category: Category;
   description: string;
-  image: string;
+  imageUrl: string;
   price: number;
   subcategory: Subcategory;
   tags: string[];
@@ -20,7 +20,7 @@ export interface CreateProduct {
   category: string;
   subcategory: string;
   description: string;
-  image?: string;
+  imageUrl?: string;
   price: number;
   stock: number;
   size: string;
