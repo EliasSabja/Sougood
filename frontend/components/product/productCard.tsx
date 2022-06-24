@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styles from '../../assets/styles/components/productCard.module.css';
 import Image from 'next/image';
 import Router from 'next/router';
@@ -22,19 +22,20 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
 
   useEffect(() => {
     setProduct(props.product);
-    if (props.product.imageUrl) {
+  }, [props.product, props.product.imageUrl]);
+
+  useEffect(() => {
+    if (!product || !imageRef) return;
+    if (product.imageUrl && imageRef.current) {
       const newImage = CloudService.image(props.product.imageUrl);
-      //
-      if (imageRef.current)
-      {
-        console.log(imageRef.current.clientWidth + ":" + imageRef.current.clientHeight);
-        newImage.resize(scale()
+      newImage.resize(
+        scale()
         .width(imageRef.current.clientWidth)
-        .height(imageRef.current.clientHeight));
-      }
+        .height(imageRef.current.clientHeight)
+      );
       setImage(newImage);
-    };
-  }, [props.product, imageRef.current]);
+    }
+  }, [product]);
 
   const styleOptions = {
     'small': styles.small,
@@ -51,7 +52,6 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
     { product &&
       <div className={styles.productCard + " " + styleOptions[product.size]} onClick={showDetails}>
         <div ref={imageRef} className={styles.productCardImageContainer}>
-          {/* <Image src={require('../../assets/images/' + image)} className={styles.productCardImage} layout="fill" /> */}
           {
             image ? <AdvancedImage className={styles.productCardImage} cldImg={image} /> :
             <Image src={require('../../assets/images/' + defaultImage)} className={styles.productCardImage} layout="fill" /> 
