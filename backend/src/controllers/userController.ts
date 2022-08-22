@@ -8,7 +8,9 @@ const createUser = async (request: UserPostRequest) => {
   El request sigue la estructura de UserRequest.post.
   */
   try {
+    console.log(request);
     const user = new User(request);
+    console.log(user);
     await user.save();
     return user;
   } catch (err: any) {

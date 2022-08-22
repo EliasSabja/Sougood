@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styles from '../../assets/styles/components/productCard.module.css';
 import Image from 'next/image';
 import Router from 'next/router';
 import { Row, Col } from 'react-bootstrap';
 import Product from '../../types/product';
+import { AdvancedImage } from '@cloudinary/react';
+import { CloudinaryImage } from '@cloudinary/url-gen';
+import { CloudService } from "../../config/config";
+import { scale } from '@cloudinary/url-gen/actions/resize';
 
 interface ProductCardProps {
   product: Product;
@@ -12,12 +16,26 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
   const [product, setProduct] = useState<Product>();
-  const [image, setImage] = useState<string>("image-default.png");
+  const [image, setImage] = useState<CloudinaryImage>();
+  const imageRef = useRef<HTMLInputElement>();
+  const defaultImage = "image-default.png";
 
   useEffect(() => {
     setProduct(props.product);
-    if (props.product.image) setImage(props.product.image);
-  }, [props.product]);
+  }, [props.product, props.product.imageUrl]);
+
+  useEffect(() => {
+    if (!product || !imageRef) return;
+    if (product.imageUrl && imageRef.current) {
+      const newImage = CloudService.image(props.product.imageUrl);
+      newImage.resize(
+        scale()
+        .width(imageRef.current.clientWidth)
+        .height(imageRef.current.clientHeight)
+      );
+      setImage(newImage);
+    }
+  }, [product]);
 
   const styleOptions = {
     'small': styles.small,
@@ -33,8 +51,11 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
     <>
     { product &&
       <div className={styles.productCard + " " + styleOptions[product.size]} onClick={showDetails}>
-        <div className={styles.productCardImageContainer}>
-          <Image src={require('../../assets/images/' + image)} className={styles.productCardImage} layout="fill" />
+        <div ref={imageRef} className={styles.productCardImageContainer}>
+          {
+            image ? <AdvancedImage className={styles.productCardImage} cldImg={image} /> :
+            <Image src={require('../../assets/images/' + defaultImage)} className={styles.productCardImage} layout="fill" /> 
+          }  
         </div>
         <Row>
           <Col className={styles.productName + " " + styles.productText}><span>{product.name}</span></Col>
