@@ -27,10 +27,10 @@ export const login = async (email: string, password: string): Promise<[string, s
 }
 
 export const register = async (email: string, password: string) => {
-  const data = {
+  const data = JSON.stringify({
     email,
     password
-  };
+  });
 
   const config = {
     method: 'post',
@@ -38,7 +38,7 @@ export const register = async (email: string, password: string) => {
     headers: {
       'Content-Type': 'application/json'
     },
-    data
+    data: data
   }
 
   axios(config)

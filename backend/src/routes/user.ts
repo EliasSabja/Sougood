@@ -14,6 +14,9 @@ userRouter.post("/", async (req: Request, res: Response) => {
   }
 });
 
+userRouter.get("/", async (req: Request, res: Response) => {
+    return res.status(200).send({message: "hola"});
+});
 userRouter.delete("/", auth, isAdmin, async (req: Request, res: Response) => {
   try {
     console.log("Removing all users");
