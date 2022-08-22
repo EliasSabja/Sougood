@@ -2,6 +2,10 @@ import { Button } from 'react-bootstrap';
 import ICartItem from "../../types/cart";
 import styles from "../../assets/styles/components/cart.module.css";
 import buttonStyle from "../../assets/styles/components/buttons.module.css";
+import { AdvancedImage } from '@cloudinary/react';
+import { CloudinaryImage } from '@cloudinary/url-gen';
+import { CloudService } from "../../config/config";
+import { scale } from '@cloudinary/url-gen/actions/resize';
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -13,10 +17,23 @@ type Props = {
 };
 
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
-  const [image, setImage] = useState<string>("image-default.png");
+  //const [image, setImage] = useState<string>("image-default.png");
+  const [image, setImage] = useState<CloudinaryImage>();
+  const defaultImage = "image-default.png";
+  const defaultWidth = 120;
+  const defaultHeight = 90;
 
   useEffect(() => {
-    if (item.image) setImage(item.image);
+    if (!item) return;
+    if (item.image ) {
+      const newImage = CloudService.image(item.image);
+      newImage.resize(
+        scale()
+        .width(defaultWidth)
+        .height(defaultHeight)
+      );
+      setImage(newImage);
+    }
   }, [item]);
 
   return (
@@ -43,8 +60,9 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
         > + </Button>
       </div>
     </div>
-    { image && <Image className={styles.productImage} src={require('../../assets/images/' + image)} width="120px" height="90px"></Image>}
-
+    { image ? <AdvancedImage className={styles.productCardImage} cldImg={image} /> :
+                <Image src={require('../../assets/images/' + defaultImage)} className={styles.productCardImage} width="120px" height="90px" />
+     }
   </div>
 );
 }

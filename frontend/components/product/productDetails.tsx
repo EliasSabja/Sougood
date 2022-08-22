@@ -25,7 +25,6 @@ const ProductDetails = (props: ProductDetailsProps): ReactElement => {
 
   useEffect(() => {
     setProduct(props.product);
-    console.log(props.product);
     //if (props.product.imageUrl) setImage(props.product.imageUrl);
     if (!props.product) return;
     if (props.product.imageUrl ) {
@@ -42,6 +41,7 @@ const ProductDetails = (props: ProductDetailsProps): ReactElement => {
   const { addToCart } = useCartItemsContext();
 
   const handleAddToCart = () => {
+    console.log("Adding prod:", props.product);
     addToCart(cartItemFromProduct(props.product));
   }
 

@@ -33,6 +33,7 @@ export const CartProvider = ({ children }) => {
       
       return [...prev, { ...newItem, amount: 1 }];
     });
+
   };
 
   const removeFromCart = (id: string) => {
