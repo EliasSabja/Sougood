@@ -1,6 +1,6 @@
 
 export default interface ICartItem {
-  id: string;
+  _id: string;
   name: string;
   category: string;
   subcategory: string;

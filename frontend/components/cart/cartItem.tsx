@@ -1,11 +1,9 @@
+//import Button from "@mui/material/Button";
 import { Button } from 'react-bootstrap';
+//import Button from '../shared/buttons';
 import ICartItem from "../../types/cart";
 import styles from "../../assets/styles/components/cart.module.css";
 import buttonStyle from "../../assets/styles/components/buttons.module.css";
-import { AdvancedImage } from '@cloudinary/react';
-import { CloudinaryImage } from '@cloudinary/url-gen';
-import { CloudService } from "../../config/config";
-import { scale } from '@cloudinary/url-gen/actions/resize';
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -17,23 +15,10 @@ type Props = {
 };
 
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
-  //const [image, setImage] = useState<string>("image-default.png");
-  const [image, setImage] = useState<CloudinaryImage>();
-  const defaultImage = "image-default.png";
-  const defaultWidth = 120;
-  const defaultHeight = 90;
+  const [image, setImage] = useState<string>("image-default.png");
 
   useEffect(() => {
-    if (!item) return;
-    if (item.image ) {
-      const newImage = CloudService.image(item.image);
-      newImage.resize(
-        scale()
-        .width(defaultWidth)
-        .height(defaultHeight)
-      );
-      setImage(newImage);
-    }
+    if (item.image) setImage(item.image);
   }, [item]);
 
   return (
@@ -49,7 +34,7 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
           size="sm"
           variant="outline-success"
           className={buttonStyle.buttonAmount}
-          onClick={() => removeFromCart(item.id)}
+          onClick={() => removeFromCart(item._id)}
         > - </Button>
         <p>Cantidad: {item.amount}</p>
         <Button
@@ -60,9 +45,8 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
         > + </Button>
       </div>
     </div>
-    { image ? <AdvancedImage className={styles.productCardImage} cldImg={image} /> :
-                <Image src={require('../../assets/images/' + defaultImage)} className={styles.productCardImage} width="120px" height="90px" />
-     }
+    { image && <Image className={styles.productImage} src={require('../../assets/images/' + image)} width="120px" height="90px"></Image>}
+
   </div>
 );
 }

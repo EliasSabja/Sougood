@@ -53,12 +53,12 @@ const tags2 = [
 // ];
 
 interface CatalogLayoutProps {
-  category?: string,
+  category: string,
 }
 
 const CatalogLayout: React.FC<CatalogLayoutProps> = (props: CatalogLayoutProps) => {
   const [products, setProducts] = useState<Product[]>();
-  const [category, setCategory] = useState<string>(props.category);
+  const [category, setCategory] = useState<string>(props?.category);
   const [isShowingDetails, setIsShowingDetails] = useState<boolean>(false);
   const [selectedProduct, setSelectedProduct] = useState<Product>();
 
@@ -69,7 +69,6 @@ const CatalogLayout: React.FC<CatalogLayoutProps> = (props: CatalogLayoutProps) 
 
   const closeShowDetails = () => {
     setIsShowingDetails(currIsShowingDetails => !currIsShowingDetails);
-    setSelectedProduct({});
   }
 
   useEffect(() => {

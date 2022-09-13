@@ -13,7 +13,7 @@ interface CartProps {
 }
 
 const Cart: React.FC = () => {
-  const calculateTotal = (items: ICartItem) => {
+  const calculateTotal = (items: ICartItem[]) => {
     return items.reduce((ack: number, item: ICartItem) => ack + (item.amount * item.price), 0)
   }
 
