@@ -9,6 +9,7 @@ import CategoryItem from './CategoryItem';
 import styles from '../../../assets/styles/header.module.css';
 import { useUserContext } from '../../../contexts/userContext';
 import { getCategories } from '../../../lib/categories';
+import Category from '../../../types/category';
 
 // const CATEGORIES = [ 
 //   { 
@@ -55,14 +56,14 @@ const NavBar: React.FC<NavBarProps> = ({ openCart }) => {
   const {token, role, removeToken} = useUserContext();
   const router = useRouter();
   const { getTotalItems, cartItems } = useCartItemsContext();
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   
   useEffect(() => {
     // Fetch categories from backend
     getCategories().then(categories => setCategories(categories)).catch(e => alert(e));
   }, [])
 
-  const listCategories = categories.map(category => <CategoryItem key={category._id} category={category.name} subcategories={category.subcategories} componentStyle={styles.category}/>);
+  const listCategories = categories.map(category => <CategoryItem key={category._id} category={category} subcategories={category.subcategories} componentStyle={styles.category}/>);
 
   return (
     <Navbar collapseOnSelect className={styles.navBar} expand="lg">

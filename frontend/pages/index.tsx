@@ -3,7 +3,7 @@ import CatalogLayout from '../components/catalog/catalogLayout';
 
 const Index: React.FC = () => {
   return (
-    <CatalogLayout />
+    <CatalogLayout category={""}/>
   );
 };
 

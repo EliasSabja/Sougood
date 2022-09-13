@@ -3,10 +3,10 @@ import Product from "../types/product";
 
 export const cartItemFromProduct = (product: Product): ICartItem => {
   return {
-    id: product._id,
+    _id: product._id,
     name: product.name,
-    category: product.category,
-    subcategory: product.subcategory,
+    category: product.category.name,
+    subcategory: product.subcategory.name,
     description: product.description,
     image: product.imageUrl,
     price: product.price,

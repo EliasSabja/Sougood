@@ -10,7 +10,11 @@ type ICartItemsContext = {
 
 export const CartItemsContext = createContext<ICartItemsContext>(null);
 
-export const CartProvider = ({ children }) => {
+type Props = {
+  children: JSX.Element,
+};
+
+export const CartProvider: React.FC<Props>= ({ children }) => {
   const [cartItems, setCartItems] = useState<ICartItem[]>([]);
 
   useEffect(() => {
@@ -25,10 +29,10 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (newItem: ICartItem) => {
     setCartItems(prev => {
-      const isItemInCart = prev.find(item => item.id === newItem.id);
+      const isItemInCart = prev.find(item => item._id === newItem._id);
       
       if (isItemInCart) {
-        return prev.map(item => item.id === newItem.id ? { ...item, amount: item.amount + 1 } : item)
+        return prev.map(item => item._id === newItem._id ? { ...item, amount: item.amount + 1 } : item)
       }
       
       return [...prev, { ...newItem, amount: 1 }];
@@ -37,17 +41,17 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (id: string) => {
-    if (cartItems.length == 1) localStorage.setItem('cartItems', []);
-    setCartItems((prev) => {
+    if (cartItems.length === 1) localStorage.setItem('cartItems', '');
+    setCartItems((prev: ICartItem[]) => {
       return prev.reduce((acc, item) => {
-        if (item.id === id) {
+        if (item._id === id) {
           if (item.amount === 1) return acc;
           return [...acc, { ...item, amount: item.amount - 1 }];
         }
 
         return [...acc, item];
 
-      }, [])
+      }, [] as ICartItem[])
     });
   };
 

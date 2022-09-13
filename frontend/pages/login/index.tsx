@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Form, Container, Row} from 'react-bootstrap';
@@ -51,7 +52,10 @@ const Login: React.FC = () => {
             </div>
 
           <div className={`text-center mt-3`}>
-            <a href="/register" className='row link-primary justify-content-center mb-2'>¿No tienes una cuenta?</a>
+            <Link href="/register">
+              <a className='row link-primary justify-content-center mb-2'>¿No tienes una cuenta?</a>
+            </Link>
+            {/* <a href="/register" className='row link-primary justify-content-center mb-2'>¿No tienes una cuenta?</a> */}
             <button className={`btn btn-outline-success`}style={{marginTop: 10}} type="submit">
               Iniciar sesión
             </button>

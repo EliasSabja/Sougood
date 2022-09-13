@@ -12,7 +12,11 @@ type IUserContext = {
 
 export const UserContext = createContext<IUserContext>(null);
 
-export const UserProvider = ({ children }) => {
+type Props = {
+  children: JSX.Element,
+};
+
+export const UserProvider: React.FC<Props> = ({ children }) => {
   const router = useRouter();
   const [token, setToken] = useState<string>("");
   const [role, setRole] = useState<string>("");

@@ -3,16 +3,16 @@ import styles from '../../assets/styles/components/cart.module.css';
 import { useState } from 'react';
 
 const OrganizationSelector = () => {
-  const [organization, setOrganization] = useState<number>(0);
+  const [organization, setOrganization] = useState<string>("0");
 
   const handleChange = (event: SelectChangeEvent) => {
-    setOrganization(event.target.value as number);
+    setOrganization(event.target.value);
   };
 
   return (
     <Select className={styles.selector} id="organization" onChange={handleChange} value={organization}>
-      <MenuItem value={0}>Fundación Beata Laura Vicuña</MenuItem>
-      <MenuItem value={1}>Sindicato Clínica Alemana</MenuItem>
+      <MenuItem value={"0"}>Fundación Beata Laura Vicuña</MenuItem>
+      <MenuItem value={"1"}>Sindicato Clínica Alemana</MenuItem>
     </Select>
   );
 };

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useState } from 'react';
 import { Form, Container, Row } from 'react-bootstrap';
 import { register } from '../../lib/user';
@@ -48,7 +49,10 @@ const Register: React.FC = () => {
           <Form.Control onChange={(e: any) => handleOnChange(e.target.value, 'passwordConfirmation')} type="password" placeholder="123456" required={true}/>
         </div>
       <div className={`text-center`}>
-        <a href="/login" className='row link-primary justify-content-center'>¿Ya tienes una cuenta?</a>
+        <Link href="/login">
+          <a className='row link-primary justify-content-center'>¿Ya tienes una cuenta?</a>
+        </Link>
+        {/* <a href="/login" className='row link-primary justify-content-center'>¿Ya tienes una cuenta?</a> */}
         <button className={`btn btn-outline-success`}style={{marginTop: 10}} type="submit">
           Submit
         </button>

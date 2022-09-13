@@ -17,7 +17,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
   const [product, setProduct] = useState<Product>();
   const [image, setImage] = useState<CloudinaryImage>();
-  const imageRef = useRef<HTMLInputElement>();
+  const imageRef = useRef<HTMLInputElement>(null);
   const defaultImage = "image-default.png";
 
   useEffect(() => {
@@ -44,14 +44,14 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
   };
 
   const showDetails = () => {
-    props.showDetails(product);
+    if (product) props.showDetails(product);
   };
 
   return (
     <>
     { product &&
-      <div className={styles.productCard + " " + styleOptions[product.size]} onClick={showDetails}>
-        <div ref={imageRef} className={styles.productCardImageContainer}>
+      <div className={styles.productCard + " " + styleOptions[product.size as keyof typeof styleOptions]} onClick={showDetails}>
+        <div ref={imageRef ? imageRef : null} className={styles.productCardImageContainer}>
           {
             image ? <AdvancedImage className={styles.productCardImage} cldImg={image} /> :
             <Image src={require('../../assets/images/' + defaultImage)} className={styles.productCardImage} layout="fill" /> 
